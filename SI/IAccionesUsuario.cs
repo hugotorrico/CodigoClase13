@@ -44,9 +44,6 @@ namespace SI
         void BuscarPorFiltros();
     }
 
-
-
-
     #endregion
 
 

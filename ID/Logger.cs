@@ -6,27 +6,59 @@ using System.Threading.Tasks;
 
 namespace ID
 {
+    public interface ILog
+    {
+        public void WriteError(string error);
+        public void WriteSucess(string error);
+    }
+
+    public class FileLog : ILog
+    {
+        public void WriteError(string error)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void WriteSucess(string error)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    public class DatabaseLog : ILog
+    {
+        public void WriteError(string error)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void WriteSucess(string error)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+
+    //Console.WriteLine($"Logging: {message}");
+
     public class Logger
     {
-        public void Log(string message)
+        private readonly ILog _log;//Variable privada dentro la clase
+
+        public Logger(ILog log)
         {
-            Console.WriteLine($"Logging: {message}");
+            _log = log;
+        }
+        public void Error(string error)
+        {           
+            _log.WriteError(error);
+        }
+        public void Sucess(string error)
+        {
+            _log.WriteSucess(error);
         }
     }
 
-    public class ClaseAlta3
-    {
-        private readonly Logger _logger;
-
-        public ClaseAlta3()
-        {
-            _logger = new Logger(); // Dependencia concreta
-        }
-
-        public void DoSomething()
-        {
-            _logger.Log("Doing something...");
-        }
-    }
+  
 
 }
